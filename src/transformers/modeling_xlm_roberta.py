@@ -26,6 +26,7 @@ from .modeling_roberta import (
     RobertaForSequenceClassification,
     RobertaForTokenClassification,
     RobertaModel,
+    RobertaForQuestionAnswering,
 )
 
 
@@ -122,5 +123,9 @@ class XLMRobertaForTokenClassification(RobertaForTokenClassification):
     superclass for the appropriate documentation alongside usage examples.
     """
 
+    config_class = XLMRobertaConfig
+    pretrained_model_archive_map = XLM_ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP
+
+class XLMRobertaForQuestionAnswering(RobertaForQuestionAnswering):
     config_class = XLMRobertaConfig
     pretrained_model_archive_map = XLM_ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP

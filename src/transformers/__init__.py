@@ -284,6 +284,7 @@ if is_torch_available():
         XLMRobertaForMultipleChoice,
         XLMRobertaForSequenceClassification,
         XLMRobertaForTokenClassification,
+        XLMRobertaForQuestionAnswering,
         XLM_ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP,
     )
     from .modeling_mmbt import ModalEmbeddings, MMBTModel, MMBTForClassification
