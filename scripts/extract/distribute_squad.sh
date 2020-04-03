@@ -34,7 +34,7 @@ mkdir $CODE_DIR
 cd $CODE_DIR
 git clone https://github.com/ZhuoyuWei/extract_basedon_xlm_roberta.git
 cd extract_basedon_xlm_roberta
-sudo pip install torch torchvision
+sudo pip install --upgrade torch torchvision
 sudo pip install .
 
 #running
