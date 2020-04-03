@@ -10,10 +10,13 @@ mkdir $OUTPUT_DIR
 
 #envirement
 sudo apt-get install zip -y
+cd /
 EXP_ROOT_DIR=/zhuoyu_exp
 sudo mkdir $EXP_ROOT_DIR
 sudo chmod 777 $EXP_ROOT_DIR
 cd $EXP_ROOT_DIR
+pwd
+ls
 
 #data
 DATA_DIR=${EXP_ROOT_DIR}/data
@@ -25,11 +28,11 @@ cd $EXP_ROOT_DIR
 
 #code
 CODE_DIR=${EXP_ROOT_DIR}/code
+mkdir $CODE_DIR
 cd $CODE_DIR
 git clone https://github.com/ZhuoyuWei/extract_basedon_xlm_roberta.git
 cd extract_basedon_xlm_roberta
-#sudo pip install -r requirements.txt
-sudo python setup.py
+sudo pip install .
 
 #running
 python -m torch.distributed.launch --nproc_per_node=8 ./examples/run_squad.py \
