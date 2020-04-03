@@ -11,7 +11,7 @@ mkdir $OUTPUT_DIR
 #envirement
 sudo apt-get install zip -y
 EXP_ROOT_DIR=/zhuoyu_exp
-mkdir $EXP_ROOT_DIR
+sudo mkdir $EXP_ROOT_DIR
 sudo chmod 777 $EXP_ROOT_DIR
 cd $EXP_ROOT_DIR
 
