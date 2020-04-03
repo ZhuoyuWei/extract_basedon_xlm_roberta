@@ -1,6 +1,8 @@
 #!/bin/sh
 
 EXP_ID=$1
+MODEL_TYPE=$2
+MODEL_NAME=$3
 
 #output dir setting
 WDATA_DIR=/data/zhuoyu/extraction/wdata
@@ -32,12 +34,13 @@ mkdir $CODE_DIR
 cd $CODE_DIR
 git clone https://github.com/ZhuoyuWei/extract_basedon_xlm_roberta.git
 cd extract_basedon_xlm_roberta
+sudo pip install torch torchvision
 sudo pip install .
 
 #running
 python -m torch.distributed.launch --nproc_per_node=8 ./examples/run_squad.py \
-    --model_type bert \
-    --model_name_or_path bert-large-uncased-whole-word-masking \
+    --model_type ${MODEL_TYPE} \
+    --model_name_or_path ${MODEL_NAME} \
     --do_train \
     --do_eval \
     --do_lower_case \
@@ -51,3 +54,7 @@ python -m torch.distributed.launch --nproc_per_node=8 ./examples/run_squad.py \
     --output_dir  $OUTPUT_DIR\
     --per_gpu_eval_batch_size=16   \
     --per_gpu_train_batch_size=16   \
+
+#evaluating
+#cd scripts/extract
+#python evaluate-2.0.py --data_file=${DATA_DIR}/dev-v2.0.json --pred_file=${OUTPUT_DIR}/
