@@ -28,8 +28,8 @@ CODE_DIR=${EXP_ROOT_DIR}/code
 cd $CODE_DIR
 git clone https://github.com/ZhuoyuWei/extract_basedon_xlm_roberta.git
 cd extract_basedon_xlm_roberta
-sudo pip install -r requirements.txt
-
+#sudo pip install -r requirements.txt
+sudo python setup.py
 
 #running
 python -m torch.distributed.launch --nproc_per_node=8 ./examples/run_squad.py \
