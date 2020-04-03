@@ -48,13 +48,13 @@ python -m torch.distributed.launch --nproc_per_node=8 ./examples/run_squad.py \
     --train_file $DATA_DIR/train-v2.0.json \
     --predict_file $DATA_DIR/dev-v2.0.json \
     --learning_rate 1.2e-4 \
-    --num_train_epochs 3 \
+    --num_train_epochs 2 \
     --max_seq_length 384 \
     --doc_stride 128 \
     --output_dir  $OUTPUT_DIR\
-    --per_gpu_eval_batch_size=16   \
-    --per_gpu_train_batch_size=16   \
+    --per_gpu_eval_batch_size=32   \
+    --per_gpu_train_batch_size=32   \
 
 #evaluating
 #cd scripts/extract
-#python evaluate-2.0.py --data_file=${DATA_DIR}/dev-v2.0.json --pred_file=${OUTPUT_DIR}/
+#python evaluate-2.0.py ${DATA_DIR}/dev-v2.0.json ${OUTPUT_DIR}/predictions_.json --out-file ${OUTPUT_DIR}/res.json
